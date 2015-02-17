@@ -1,0 +1,8 @@
+.git
+.tmp
+.bundle
+.sass-cache
+app/scripts/templates/templates.js
+node_modules
+bower_components
+dist

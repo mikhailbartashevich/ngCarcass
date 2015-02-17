@@ -1,0 +1,39 @@
+<div ng-show="errorMessage" class="alert alert-danger alert-dismissable">
+   <button type="button" class="close" data-dismiss="alert" 
+      aria-hidden="true">
+      &times;
+   </button>
+   {{errorMessage}}
+</div>
+
+
+<div class="container">
+    <div class="omb_login">
+        <h3 class="omb_authTitle">Sign up</h3>
+
+        <div class="row omb_row-sm-offset-3">
+            <div class="col-xs-12 col-sm-6">    
+                <form class="omb_loginForm" ng-init="registrationForm = {}" autocomplete="off" method="POST">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="email" class="form-control" name="username" ng-model="registrationForm.email" placeholder="Email address">
+                    </div>
+                    <span class="help-block"></span>
+                                        
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input  type="password" ng-model="registrationForm.password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                     <span class="help-block"></span>
+                    <button class="btn btn-lg btn-primary btn-block" ng-click="signUp()" type="submit">Create Account</button>
+                </form>
+            </div>
+        </div>
+        <div class="row omb_row-sm-offset-3">
+            <div class="col-xs-12 col-sm-3">
+                <label class="checkbox remember-me"></label>
+            </div>
+
+        </div>          
+    </div>
+</div>
