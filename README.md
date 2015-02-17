@@ -1,5 +1,6 @@
 # ngCarcass
 An Angular.js + Require.js application scaffold with Start Bootstrap templates.
+Supports FireBase backend service, Facebook, Twitter and Google authorization.
 
 Instructions to run the sample code
 -----------------------------------
