@@ -34,9 +34,9 @@ define([
                 collectAllDependencies: collectAllDependencies,
                 registerModule: registerModule,
                 APPLICATION_MODE : 'firebase-client-auth', // or firebase-backend-auth
-                FACEBOOK_APP_ID : '',
-                GOOGLE_APP_ID : '',
-                FIREBASE_URL: 'https://amber-heat-<your-app>.firebaseio.com/'
+                FACEBOOK_APP_ID : '', // for firebase-backend-auth
+                GOOGLE_APP_ID : '', // for firebase-backend-auth
+                FIREBASE_URL: 'https://amber-heat-<your-app>.firebaseio.com/' // for firebase-client-auth
 
             };
     });

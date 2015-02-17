@@ -25,6 +25,7 @@ Then run following commands:
 
 	- npm install
 	- bower install
+	- change app/scripts/config.js file, use 'firebase-client-auth' key, use your firebase keys
 	- grunt dev (Development mode)
 
 To run app in production mode please change links in index.html to its production versions and run
@@ -45,7 +46,7 @@ To run protractor (http://angular.github.io/protractor/)
 
 To use FireBase backend auth service (https://www.firebase.com/)
 	
-	- change app/config.js file, use 'firebase-backend-auth' key, use your firebase keys
+	- change app/scripts/config.js file, use 'firebase-backend-auth' key, use your firebase keys
 	- change server/config.js file, use your firebase keys
 	- npm install firebase express body-parser request querystring
 	- node server/app
