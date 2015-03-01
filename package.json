@@ -6,6 +6,15 @@
 		"type" : "git", 
 		"url" : "https://github.com/mikhailbartashevich/ngCarcass.git"
 	},
+    "keywords" : [
+        "AngularJs",
+        "RequireJs",
+        "SASS",
+        "jasmine",
+        "karma",
+        "protractor",
+        "scaffold"
+    ] 
     "dependencies": {
 
         "grunt"                         : "^0.4.5",
