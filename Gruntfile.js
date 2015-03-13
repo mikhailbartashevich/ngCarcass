@@ -114,60 +114,38 @@ module.exports = function(grunt) {
 
             requirejs : {
                 src: 'bower_components/requirejs/require.js', dest: 'dist/scripts/vendor/require.js'
-            },
-
-            sass : {
-                expand:true, src: 'app/scripts/**/*.scss', dest: '.tmp/styles/sass', filter: 'isFile'
             }
 
-        },
 
-        concat_css: {
-            dev: {
-                src: ['.tmp/styles/**/*.css'],
-                dest: '.tmp/styles/main.css',
-            },
-
-            dist: {
-                src: ['.tmp/styles/**/*.css'],
-                dest: 'dist/styles/main.css',
-            }
-            
         },
 
         cssmin: {
-          dist: {
-            files: [{
-                expand: true,
-                cwd: '.tmp/styles/css',
-                src: ['*.css'],
-                dest: '.tmp/styles/css'
-            }]
-          }
+
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '.tmp/styles/css',
+                    src: ['*.css'],
+                    dest: 'dist/styles'
+                }]
+            }
         },
 
-        compass: { 
-
-            dist: {                   
-                options: {              
-                    sassDir: '.tmp/styles/sass/**',
-                    cssDir: '.tmp/styles/css',
-                    environment: 'production'
-                }
+        less: {
+            dev : {
+                src: ['app/scripts/**/*.less'],
+                dest: '.tmp/styles/main.css'
             },
 
-            dev: {                   
-                options: {
-                    sassDir: '.tmp/styles/sass/**',
-                    cssDir: '.tmp/styles/css'
-                }
+            dist : {
+                src: ['app/scripts/**/*.less'],
+                dest: '.tmp/styles/css/main.css'
             }
         },
 
         clean: {
             dest: ['<%= dest.path %>'],
-            tmp: ['.tmp'],
-            sass : ['.sass-cache']
+            tmp: ['.tmp']
         },
 
         html2js: {
@@ -184,14 +162,14 @@ module.exports = function(grunt) {
         },
 
         svgmin: {
-          dist: {
-            files: [{
-                expand: true,
-                cwd: 'app/images',
-                src: '{,*/}*.svg',
-                dest: 'dist/images'
-            }]
-          }
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'app/images',
+                    src: '{,*/}*.svg',
+                    dest: 'dist/images'
+                }]
+            }
         },
 
         jshint: {
@@ -243,9 +221,9 @@ module.exports = function(grunt) {
                 }
             },
 
-            compass: {
-                files: ['app/**/*.{scss, sass}'],
-                tasks: ['clean', 'copy:sass', 'compass:dev', 'concat_css:dev'],
+            less: {
+                files: ['app/**/*.less'],
+                tasks: ['clean', 'less:dev'],
                 options: {
                   livereload: '<%= connect.options.livereload %>'
                 }
@@ -253,12 +231,8 @@ module.exports = function(grunt) {
         },
 
         concurrent: {
-            dist: [
-                'copy:sass', 'compass:dist'
-            ],
-
             dev: [
-                'copy:sass', 'compass:dev'
+                'less:dev'
             ]
         },
 
@@ -270,6 +244,18 @@ module.exports = function(grunt) {
 
     });
 
+    grunt.registerTask('dev', 'Compile html 2 js then start a connect web server', function (target) {
+        grunt.task.run([
+            'clean',
+            'jshint',
+            'html2js', 
+            'less:dev',
+            'configureProxies',
+            'connect:livereload',
+            'watch'
+        ]);
+    });
+
     grunt.registerTask('prod', 'Compile all sources then start a connect web server', function (target) {
         grunt.task.run([
             'clean',
@@ -278,26 +264,14 @@ module.exports = function(grunt) {
             'svgmin', 
             'requirejs:prod', 
             'copy', 
-            'concurrent:dist',
-            'concat_css:dist',
+            'less:dist',
+            'cssmin:dist',
             'clean:tmp',
             'configureProxies',
             'connect:dist:keepalive'
         ]);
     });
 
-    grunt.registerTask('dev', 'Compile html 2 js then start a connect web server', function (target) {
-        grunt.task.run([
-            'clean',
-            'jshint',
-            'html2js', 
-            'concurrent:dev',
-            'concat_css:dev',
-            'configureProxies',
-            'connect:livereload',
-            'watch'
-        ]);
-    });
 
     grunt.registerTask('test', 'Runs jasmine tests in karma', function (target) {
         grunt.task.run([

@@ -15,7 +15,7 @@ module.exports = function() {
             'angular-cookies'   : '../../bower_components/angular-cookies/angular-cookies',
             'satellizer'        : '../../bower_components/satellizer/satellizer',
             'angular-permission': '../../bower_components/angular-permission/dist/angular-permission',
-            'bootstrap'         : '../../bower_components/bootstrap/dist/js/bootstrap',
+            'bootstrap'         : '../../bower_components/adminlte/bootstrap/js/bootstrap',
             'angularMocks'      : '../../bower_components/angular-mocks/angular-mocks',
             'angularfire'       : '../../bower_components/angularfire/dist/angularfire',
             'firebase'          : '../../bower_components/firebase/firebase',
