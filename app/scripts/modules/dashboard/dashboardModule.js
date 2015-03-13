@@ -16,7 +16,7 @@ define([
 
             $stateProvider
                 .state('dashboard', {
-                    url: "/",
+                    url: "/dashboard",
                     templateUrl: "scripts/modules/dashboard/templates/dashboard.html",
                     controller: 'DashboardCtrl'
                 });

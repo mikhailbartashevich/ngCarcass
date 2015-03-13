@@ -13,6 +13,11 @@ define(['angular', 'bootstrap'], function(angular) {
                 });
         };
 
+        $scope.handleDemoLoginBtnClick = function() {
+            $rootScope.user.role = 'admin';
+            $state.go('dashboard');
+        };
+
         $scope.loginWithVendor = function(vendor) {
             ApiService.loginWithVendor(vendor) 
                 .then(function(response) {
