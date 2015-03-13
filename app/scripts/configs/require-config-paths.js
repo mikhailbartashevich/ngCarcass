@@ -12,13 +12,14 @@ module.exports = function() {
             'angular-ui-router' : '../../bower_components/angular-ui-router/release/angular-ui-router',
             'angular-resource'  : '../../bower_components/angular-resource/angular-resource',
             'angular-animate'   : '../../bower_components/angular-animate/angular-animate',
-            'angular-cookies'    : '../../bower_components/angular-cookies/angular-cookies',
+            'angular-cookies'   : '../../bower_components/angular-cookies/angular-cookies',
             'satellizer'        : '../../bower_components/satellizer/satellizer',
             'angular-permission': '../../bower_components/angular-permission/dist/angular-permission',
             'bootstrap'         : '../../bower_components/bootstrap/dist/js/bootstrap',
             'angularMocks'      : '../../bower_components/angular-mocks/angular-mocks',
             'angularfire'       : '../../bower_components/angularfire/dist/angularfire',
             'firebase'          : '../../bower_components/firebase/firebase',
+            'adminlte'          : '../../bower_components/adminlte/dist/js/app',
             'templates'         : 'templates/templates'
         },
 
@@ -59,6 +60,10 @@ module.exports = function() {
 
             'satellizer' : {
                 deps: ['angular', 'angular-cookies']
+            },
+
+            'adminlte' : {
+                deps: ['jquery', 'bootstrap']
             },
 
             'templates' : {

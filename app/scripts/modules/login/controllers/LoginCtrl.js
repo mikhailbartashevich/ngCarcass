@@ -1,4 +1,4 @@
-define(['angular', 'bootstrap'], function(angular, loginModule) {
+define(['angular', 'bootstrap'], function(angular) {
     'use strict';
 
     function LoginController($scope, $rootScope, $state, ApiService) {

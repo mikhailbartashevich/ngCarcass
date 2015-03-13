@@ -6,7 +6,8 @@ define([
     'services/MenuService',
     'services/ApiService',
     'modules/login/loginModule',
-    'modules/main/mainModule'
+    'modules/main/mainModule',
+    'modules/dashboard/dashboardModule'
     
     ], 
 
