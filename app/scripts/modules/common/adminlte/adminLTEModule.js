@@ -1,19 +1,20 @@
 define([
         'angular', 
         'config', 
-        'modules/common/adminlte/directives/initAppDirective', 
-        'adminlte'
+        'modules/common/adminlte/directives/initAppDirective',
+        'modules/common/adminlte/directives/chartJSDirective' 
+
     ], 
 
-    function (angular, ApplicationConfiguration, initAdminLteLayout) {
+    function (angular, ApplicationConfiguration, initAppDirective, chartJSDirective) {
 
         'use strict';
 
         var adminLTEModule = ApplicationConfiguration.registerModule('adminLTEModule');
 
 
-
-        adminLTEModule.directive('initAdminLteLayout', initAdminLteLayout);
+        adminLTEModule.directive('initAdminLteLayout', initAppDirective);
+        adminLTEModule.directive('chartJs', chartJSDirective);
 
         return adminLTEModule;
     });

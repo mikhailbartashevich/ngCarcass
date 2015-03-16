@@ -20,6 +20,7 @@ module.exports = function() {
             'angularfire'       : '../../bower_components/angularfire/dist/angularfire',
             'firebase'          : '../../bower_components/firebase/firebase',
             'adminlte'          : '../../bower_components/adminlte/dist/js/app',
+            'chartjs'           : '../../bower_components/adminlte/plugins/chartjs/Chart',
             'templates'         : 'templates/templates'
         },
 

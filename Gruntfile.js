@@ -193,7 +193,7 @@ module.exports = function(grunt) {
 
             js: {
                 files: ['app/scripts/**/*.js', '!**/tests/**', '!**/templates/**'],
-                tasks: ['jshint', 'jscs'],
+                tasks: ['jshint'],
                 options: {
                   livereload: '<%= connect.options.livereload %>'
                 }

@@ -18,6 +18,11 @@ define([
                 .state('dashboard', {
                     url: "/dashboard",
                     templateUrl: "scripts/modules/dashboard/templates/dashboard.html",
+                    // data: {
+                    //     permissions: {
+                    //         only: ['admin']
+                    //     }
+                    // },
                     controller: 'DashboardCtrl'
                 });
         });

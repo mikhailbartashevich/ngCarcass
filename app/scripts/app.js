@@ -41,7 +41,6 @@ define([
                 clientId: ApplicationConfiguration.GOOGLE_APP_ID
             });
 
-
             //server side auth
             $authProvider.twitter({
                 url: 'api/auth/twitter'

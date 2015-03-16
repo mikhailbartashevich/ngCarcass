@@ -78,6 +78,8 @@
        "define"    : true,
        "angular"   : true,
        "require"   : true,
-       "Firebase"  :true
+       "Firebase"  : true,
+       "FastClick" : true,
+       "Chart"     : true
     }        
 }
