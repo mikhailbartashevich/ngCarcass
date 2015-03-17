@@ -21,6 +21,7 @@ module.exports = function() {
             'firebase'          : '../../bower_components/firebase/firebase',
             'adminlte'          : '../../bower_components/adminlte/dist/js/app',
             'chartjs'           : '../../bower_components/adminlte/plugins/chartjs/Chart',
+            'ng-grid'           : '../../bower_components/ng-grid/build/ng-grid',
             'templates'         : 'templates/templates'
         },
 
@@ -57,6 +58,10 @@ module.exports = function() {
 
             'angularfire' : {
                 deps: ['angular', 'firebase']
+            },
+
+            'ng-grid' : {
+                deps: ['jquery', 'angular']
             },
 
             'satellizer' : {

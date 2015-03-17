@@ -1,93 +1,137 @@
 define([
     
-        'angular',
+        'angular'
 
 
     ], function(angular) {
     'use strict';
 
-    function DashboardController($scope, $rootScope, $state, ApiService) {
+    function DashboardTablesController($scope, $timeout, $state, ApiService) {
 
-        $scope.lineChartOptions = {
-            //Boolean - If we should show the scale at all
-            showScale: true,
-            //Boolean - Whether grid lines are shown across the chart
-            scaleShowGridLines: false,
-            //String - Colour of the grid lines
-            scaleGridLineColor: "rgba(0,0,0,.05)",
-            //Number - Width of the grid lines
-            scaleGridLineWidth: 1,
-            //Boolean - Whether to show horizontal lines (except X axis)
-            scaleShowHorizontalLines: true,
-            //Boolean - Whether to show vertical lines (except Y axis)
-            scaleShowVerticalLines: true,
-            //Boolean - Whether the line is curved between points
-            bezierCurve: true,
-            //Number - Tension of the bezier curve between points
-            bezierCurveTension: 0.3,
-            //Boolean - Whether to show a dot for each point
-            pointDot: false,
-            //Number - Radius of each point dot in pixels
-            pointDotRadius: 4,
-            //Number - Pixel width of point dot stroke
-            pointDotStrokeWidth: 1,
-            //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-            pointHitDetectionRadius: 20,
-            //Boolean - Whether to show a stroke for datasets
-            datasetStroke: true,
-            //Number - Pixel width of dataset stroke
-            datasetStrokeWidth: 2,
-            //Boolean - Whether to fill the dataset with a color
-            datasetFill: true,
-            //String - A legend template
-            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%=datasets[i].label%></li><%}%></ul>",
-            //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-            maintainAspectRatio: false,
-            //Boolean - whether to make the chart responsive to window resizing
-            responsive: true
-        };
+        ApiService.retrieveData('tableData', $scope, 'persons');
 
-        $scope.options = {
-                    //Boolean - Whether we should show a stroke on each segment
-            segmentShowStroke: true,
-            //String - The colour of each segment stroke
-            segmentStrokeColor: "#fff",
-            //Number - The width of each segment stroke
-            segmentStrokeWidth: 1,
-            //Number - The percentage of the chart that we cut out of the middle
-            percentageInnerCutout: 50, // This is 0 for Pie charts
-            //Number - Amount of animation steps
-            animationSteps: 100,
-            //String - Animation easing effect
-            animationEasing: "easeOutBounce",
-            //Boolean - Whether we animate the rotation of the Doughnut
-            animateRotate: true,
-            //Boolean - Whether we animate scaling the Doughnut from the centre
-            animateScale: false,
-            //Boolean - whether to make the chart responsive to window resizing
-            responsive: true,
-            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-            maintainAspectRatio: false,
-            //String - A legend template
-            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
-            //String - A tooltip template
-            tooltipTemplate: "<%=value %> <%=label%> users"
-        };
+	 	$scope.filterOptions = {
+		    filterText: ""
+		 };
+
+		$scope.pagingOptions = {
+		    pageSizes: [10, 25, 50, 100],
+		    pageSize: 10,
+		    totalServerItems: 0,
+		    currentPage: 1
+		};
+
+  		$scope.totalServerItems = 0;
+
+		$scope.setPagingData = function(field, data, page, pageSize) {
+		    var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+		 
+		    $scope[field] = pagedData;	
+		    
+		    $scope.totalServerItems = data.length;
+	    	$timeout(function() {
+	    		$scope.$apply();
+	    	});
+		};
+
+		$scope.getPagedDataAsync = function(field, pageSize, page) {
+		    setTimeout(function() {      
+		        if($scope.persons) {
+		          	$scope.setPagingData(field, $scope.persons, page, pageSize);
+		        }
+		    }, 100);
+		};
+
+		$scope.$watch('pagingOptions', function() {
+		    $scope.getPagedDataAsync('myData', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+		}, true);
+
+		$scope.$watch('pagingOptions1', function() {
+		    $scope.getPagedDataAsync('myData1', $scope.pagingOptions1.pageSize, $scope.pagingOptions1.currentPage, $scope.filterOptions.filterText);
+		}, true);
 
 
-        ApiService.retrieveData("lineCharts", $scope, 'lineChartData');
+		$scope.$watch('pagingOptions2', function() {
+		    $scope.getPagedDataAsync('myData2', $scope.pagingOptions2.pageSize, $scope.pagingOptions2.currentPage, $scope.filterOptions.filterText);
+		}, true);
 
-        ApiService.retrieveData("lineCharts", $scope, 'barChartData');
+		$scope.$watch('pagingOptions3', function() {
+		    $scope.getPagedDataAsync('myData3', $scope.pagingOptions3.pageSize, $scope.pagingOptions3.currentPage, $scope.filterOptions.filterText);
+		}, true);
 
-        ApiService.retrieveData("lineCharts1", $scope, 'lineChart1Data');
 
-        ApiService.retrieveData('pieCharts', $scope, 'pieChartData');
+		$scope.$watch('persons', function() {
+		    $scope.getPagedDataAsync('myData', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+		    $scope.getPagedDataAsync('myData1', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+		    $scope.getPagedDataAsync('myData2', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+		    $scope.getPagedDataAsync('myData3', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+		}, true);
 
-        // ApiService.addData('pieCharts', );
+    	$scope.gridOptions = { 
+    		data: 'myData',
+    		enablePaging: true,
+			showFooter: true,
+			totalServerItems : 'totalServerItems',
+	        pagingOptions: $scope.pagingOptions,
+    		columnDefs: [
+    			{ field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
+                { field: 'lastName', displayName: 'Last Name', width: "40%" },
+                { field: 'id', displayName: 'ID', width: "20%" }
+            ]
 
-        // ApiService.addData('lineCharts',);
+    	};
+
+    	$scope.pagingOptions1 = angular.copy($scope.pagingOptions);
+
+
+    	$scope.gridOptions1 = { 
+    		data: 'myData1',
+    		enablePaging: true,
+			showFooter: true,
+			totalServerItems : 'totalServerItems',
+	        pagingOptions: $scope.pagingOptions1,
+    		columnDefs: [
+    			{ field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
+                { field: 'lastName', displayName: 'Last Name', width: "40%" },
+                { field: 'id', displayName: 'ID', width: "20%" }
+            ]
+
+    	};
+
+    	$scope.pagingOptions2 = angular.copy($scope.pagingOptions);
+
+    	$scope.gridOptions2 = { 
+    		data: 'myData2',
+    		enablePaging: true,
+			showFooter: true,
+			totalServerItems : 'totalServerItems',
+	        pagingOptions: $scope.pagingOptions2,
+    		columnDefs: [
+    			{ field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
+                { field: 'lastName', displayName: 'Last Name', width: "40%" },
+                { field: 'id', displayName: 'ID', width: "20%" }
+            ]
+
+    	};
+
+    	$scope.pagingOptions3 = angular.copy($scope.pagingOptions);
+
+
+    	$scope.gridOptions3 = { 
+    		data: 'myData3',
+    		enablePaging: true,
+			showFooter: true,
+			totalServerItems : 'totalServerItems',
+	        pagingOptions: $scope.pagingOptions3,
+    		columnDefs: [
+    			{ field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
+                { field: 'lastName', displayName: 'Last Name', width: "40%" },
+                { field: 'id', displayName: 'ID', width: "20%" }
+            ]
+
+    	};
 
     }
 
-    return  DashboardController;
+    return  DashboardTablesController;
 });

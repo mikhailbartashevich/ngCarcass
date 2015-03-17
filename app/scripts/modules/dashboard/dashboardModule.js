@@ -4,15 +4,17 @@ define([
         'modules/dashboard/controllers/DashboardCtrl', 
         'modules/dashboard/controllers/DashboardMainCtrl',
         'modules/dashboard/controllers/DashboardChartsCtrl',
+        'modules/dashboard/controllers/DashboardTablesCtrl',
+        'ng-grid',
         'angular-ui-router',
         'adminlte'
     ], 
 
-    function (angular, ApplicationConfiguration, DashboardCtrl, DashboardMainCtrl, DashboardChartsCtrl) {
+    function (angular, ApplicationConfiguration, DashboardCtrl, DashboardMainCtrl, DashboardChartsCtrl, DashboardTablesCtrl) {
 
         'use strict';
 
-        var dashboardModule = ApplicationConfiguration.registerModule('dashboardModule', ['ui.router']);
+        var dashboardModule = ApplicationConfiguration.registerModule('dashboardModule', ['ui.router', 'ngGrid']);
 
         dashboardModule.config(function ($stateProvider) {
 
@@ -44,12 +46,22 @@ define([
                     //     }
                     // },
                     controller: 'DashboardChartsCtrl'
+                }).state('dashboard.tables', {
+                    url: "/tables-dashboard",
+                    templateUrl: "scripts/modules/dashboard/templates/tablesDashboard.html",
+                    // data: {
+                    //     permissions: {
+                    //         only: ['admin']
+                    //     }
+                    // },
+                    controller: 'DashboardTablesCtrl'
                 });
         });
 
         dashboardModule.controller('DashboardCtrl', DashboardCtrl);
         dashboardModule.controller('DashboardMainCtrl', DashboardMainCtrl);
         dashboardModule.controller('DashboardChartsCtrl', DashboardChartsCtrl);
+        dashboardModule.controller('DashboardTablesCtrl', DashboardTablesCtrl);
 
         return dashboardModule;
     });

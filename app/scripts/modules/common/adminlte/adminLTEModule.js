@@ -2,7 +2,7 @@ define([
         'angular', 
         'config', 
         'modules/common/adminlte/directives/initAppDirective',
-        'modules/common/adminlte/directives/chartJSDirective' 
+        'modules/common/adminlte/directives/chartJSDirective'
 
     ], 
 
@@ -15,6 +15,5 @@ define([
 
         adminLTEModule.directive('initAdminLteLayout', initAppDirective);
         adminLTEModule.directive('chartJs', chartJSDirective);
-
         return adminLTEModule;
     });
