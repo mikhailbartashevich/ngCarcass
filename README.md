@@ -5,9 +5,8 @@ Supports FireBase backend service, Facebook, Twitter and Google authorization.
 Instructions to run the sample code
 -----------------------------------
 
-Current application uses Angular.js, Require.js, Node.js, Bower, Grunt, Start Bootstrap templates, SASS + COMPASS so you need to 
+Current application uses Angular.js, Require.js, Node.js, Bower, Grunt, LESS, Start Bootstrap and AdminLTE templates, so you need to 
 
-	- install Ruby and gem compass (http://compass-style.org/install/)
 	- install Node.js (http://nodejs.org/)
 	- install Bower (http://bower.io/)
 	- install Grunt (http://gruntjs.com/)
@@ -16,7 +15,7 @@ Following major grunt tasks are used:
 
 	- html2js to compile all the angular templates in a single js file to cache it
 	- requirejs to organize js files and compile them in prod mode
-	- compass to compile sass + compass files
+	- less to compile less files
 	- connect with livereload to be able to use requirejs and proxy servers
 	- watch to compile all the dev changes at runtime
 	- karma to run jasmine tests
