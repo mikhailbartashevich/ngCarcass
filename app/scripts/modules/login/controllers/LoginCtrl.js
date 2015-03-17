@@ -15,7 +15,7 @@ define(['angular', 'bootstrap'], function(angular) {
 
         $scope.handleDemoLoginBtnClick = function() {
             $rootScope.user.role = 'admin';
-            $state.go('dashboard');
+            $state.go('dashboard.main');
         };
 
         $scope.loginWithVendor = function(vendor) {
