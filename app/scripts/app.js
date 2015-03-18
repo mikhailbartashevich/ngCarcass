@@ -5,6 +5,7 @@ define([
     'services/UserService',
     'services/MenuService',
     'services/ApiService',
+    'services/FireBasePaginatorService',
     'modules/login/loginModule',
     'modules/main/mainModule',
     'modules/common/adminlte/adminLTEModule',
@@ -12,7 +13,7 @@ define([
     
     ], 
 
-    function (angular, ApplicationConfiguration, UserService, MenuService, ApiService) {
+    function (angular, ApplicationConfiguration, UserService, MenuService, ApiService, FireBasePaginatorService) {
 
         'use strict';
 
@@ -47,6 +48,7 @@ define([
             });
         });
 
+        app.factory('FireBasePaginatorService', FireBasePaginatorService);
         app.factory('ApiService', ApiService);
         app.factory('UserService', UserService);
         app.factory('MenuService', MenuService);

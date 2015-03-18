@@ -10,32 +10,32 @@ define([
 
         return {
 
-		    restrict: 'A',
+            restrict: 'A',
 
-		    link: function ($scope, $elem, attrs) {
+            link: function ($scope, $elem, attrs) {
 
-		    	var dataField = attrs.tableDataField || 'data',
+                var dataField = attrs.tableDataField || 'data',
                     options = attrs.options || 'options',
                     dataTableOptions = {};
 
-		    	if (typeof $scope[options] !== 'undefined') {
-		    		angular.extend(dataTableOptions, $scope[options]);
-		    	}
+                if (typeof $scope[options] !== 'undefined') {
+                    angular.extend(dataTableOptions, $scope[options]);
+                }
 
-		    	$scope.$watch(dataField, function() {
-		    		if($scope[dataField]) {
-	                    $elem.dataTable( {
-					        "data": $scope[dataField]
-					    });
-	                }
+                $scope.$watch(dataField, function() {
+                    if($scope[dataField]) {
+                        $elem.dataTable( {
+                            "data": $scope[dataField]
+                        });
+                    }
 
                 });
-		    	
+                
 
-			}
+            }
 
-		};
-	}
+        };
+    }
 
-	return  dataTableDirective;
+    return  dataTableDirective;
 });

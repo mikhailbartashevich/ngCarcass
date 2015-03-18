@@ -1,135 +1,152 @@
 define([
     
-        'angular'
+        'angular',
+        'config'
 
 
-    ], function(angular) {
+    ], function(angular, appConfig) {
     'use strict';
 
-    function DashboardTablesController($scope, $timeout, $state, ApiService) {
+    function DashboardTablesController($scope, $timeout, $state, ApiService, FireBasePaginatorService) {
 
-        ApiService.retrieveData('tableData', $scope, 'persons');
+        var pageLimit = 10;
 
-	 	$scope.filterOptions = {
-		    filterText: ""
-		 };
+        var fireBaseTableRef = new Firebase(appConfig.FIREBASE_URL + '/tableData');
+        var paginator = FireBasePaginatorService.initPaginator(fireBaseTableRef, pageLimit);
 
-		$scope.pagingOptions = {
-		    pageSizes: [10, 25, 50, 100],
-		    pageSize: 10,
-		    totalServerItems: 0,
-		    currentPage: 1
-		};
+        $scope.filterOptions = {
+            filterText: ""
+         };
 
-  		$scope.totalServerItems = 0;
+        $scope.pagingOptions = {
+            pageSizes: [pageLimit],
+            pageSize: pageLimit,
+            totalServerItems: 11,
+            currentPage: 1
+        };
 
-		$scope.setPagingData = function(field, data, page, pageSize) {
-		    var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-		 
-		    $scope[field] = pagedData;	
-		    
-		    $scope.totalServerItems = data.length;
-	    	$timeout(function() {
-	    		$scope.$apply();
-	    	});
-		};
+        $scope.totalServerItems = 11;
 
-		$scope.getPagedDataAsync = function(field, pageSize, page) {
-		    setTimeout(function() {      
-		        if($scope.persons) {
-		          	$scope.setPagingData(field, $scope.persons, page, pageSize);
-		        }
-		    }, 100);
-		};
+        $scope.setPagingData = function(field, pageSize, page, data) {
+         
+            $scope[field] = data;  
+            
+            $scope.totalServerItems = pageSize*page + 1;
+            $timeout(function() {
+                $scope.$apply();
+            });
+        };
 
-		$scope.$watch('pagingOptions', function() {
-		    $scope.getPagedDataAsync('myData', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-		}, true);
+        function loaded(snapshot, field, newPage, oldPage) {
+            var objects = [];
 
-		$scope.$watch('pagingOptions1', function() {
-		    $scope.getPagedDataAsync('myData1', $scope.pagingOptions1.pageSize, $scope.pagingOptions1.currentPage, $scope.filterOptions.filterText);
-		}, true);
+            angular.forEach(snapshot, function(value, key) {
+                objects.push(value);
+            });
+
+            $scope.setPagingData(field, newPage.pageSize, newPage.currentPage, objects);
+        }
+
+        $scope.getPagedDataAsync = function(field, newPage, oldPage) {
+            setTimeout(function() {
+
+                if(newPage.currentPage > oldPage.currentPage || newPage.currentPage === oldPage.currentPage) {
+
+                    paginator.nextPage(function(snapshot) {
+                        loaded(snapshot, field, newPage, oldPage);
+                    });
+
+                } else {
+
+                    paginator.prevPage(function(snapshot) {
+                        loaded(snapshot, field, newPage, oldPage);
+                    });
+
+                }
 
 
-		$scope.$watch('pagingOptions2', function() {
-		    $scope.getPagedDataAsync('myData2', $scope.pagingOptions2.pageSize, $scope.pagingOptions2.currentPage, $scope.filterOptions.filterText);
-		}, true);
+            }, 100);
+        };
 
-		$scope.$watch('pagingOptions3', function() {
-		    $scope.getPagedDataAsync('myData3', $scope.pagingOptions3.pageSize, $scope.pagingOptions3.currentPage, $scope.filterOptions.filterText);
-		}, true);
+        $scope.$watch('pagingOptions', function(newPage, oldPage) {
+            $scope.getPagedDataAsync('myData',  newPage, oldPage);
+        }, true);
+
+        $scope.$watch('pagingOptions1', function(newPage, oldPage) {
+            $scope.getPagedDataAsync('myData1', newPage, oldPage);
+        }, true);
 
 
-		$scope.$watch('persons', function() {
-		    $scope.getPagedDataAsync('myData', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-		    $scope.getPagedDataAsync('myData1', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-		    $scope.getPagedDataAsync('myData2', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-		    $scope.getPagedDataAsync('myData3', $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-		}, true);
+        $scope.$watch('pagingOptions2', function(newPage, oldPage) {
+            $scope.getPagedDataAsync('myData2',  newPage, oldPage);
+        }, true);
 
-    	$scope.gridOptions = { 
-    		data: 'myData',
-    		enablePaging: true,
-			showFooter: true,
-			totalServerItems : 'totalServerItems',
-	        pagingOptions: $scope.pagingOptions,
-    		columnDefs: [
-    			{ field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
+        $scope.$watch('pagingOptions3', function(newPage, oldPage) {
+            $scope.getPagedDataAsync('myData3',  newPage, oldPage);
+        }, true);
+
+        $scope.gridOptions = { 
+            data: 'myData',
+            enablePaging: true,
+            showFooter: true,
+            totalServerItems : 'totalServerItems',
+            pagingOptions: $scope.pagingOptions,
+            columnDefs: [
+                { field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
                 { field: 'lastName', displayName: 'Last Name', width: "40%" },
                 { field: 'id', displayName: 'ID', width: "20%" }
             ]
 
-    	};
+        };
 
-    	$scope.pagingOptions1 = angular.copy($scope.pagingOptions);
+        $scope.pagingOptions1 = angular.copy($scope.pagingOptions);
 
-
-    	$scope.gridOptions1 = { 
-    		data: 'myData1',
-    		enablePaging: true,
-			showFooter: true,
-			totalServerItems : 'totalServerItems',
-	        pagingOptions: $scope.pagingOptions1,
-    		columnDefs: [
-    			{ field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
+        $scope.gridOptions1 = { 
+            data: 'myData1',
+            enablePaging: true,
+            showFooter: true,
+            totalServerItems : 'totalServerItems',
+            pagingOptions: $scope.pagingOptions1,
+            columnDefs: [
+                { field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
                 { field: 'lastName', displayName: 'Last Name', width: "40%" },
                 { field: 'id', displayName: 'ID', width: "20%" }
             ]
 
-    	};
+        };
 
-    	$scope.pagingOptions2 = angular.copy($scope.pagingOptions);
+        $scope.pagingOptions2 = angular.copy($scope.pagingOptions);
 
-    	$scope.gridOptions2 = { 
-    		data: 'myData2',
-    		enablePaging: true,
-			showFooter: true,
-			totalServerItems : 'totalServerItems',
-	        pagingOptions: $scope.pagingOptions2,
-    		columnDefs: [
-    			{ field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
+        $scope.gridOptions2 = { 
+            data: 'myData2',
+            enablePaging: true,
+            showFooter: true,
+            totalServerItems : 'totalServerItems',
+            pagingOptions: $scope.pagingOptions2,
+            columnDefs: [
+                { field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
                 { field: 'lastName', displayName: 'Last Name', width: "40%" },
                 { field: 'id', displayName: 'ID', width: "20%" }
             ]
 
-    	};
+        };
 
-    	$scope.pagingOptions3 = angular.copy($scope.pagingOptions);
+        $scope.pagingOptions3 = angular.copy($scope.pagingOptions);
 
 
-    	$scope.gridOptions3 = { 
-    		data: 'myData3',
-    		enablePaging: true,
-			showFooter: true,
-			totalServerItems : 'totalServerItems',
-	        pagingOptions: $scope.pagingOptions3,
-    		columnDefs: [
-    			{ field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
+        $scope.gridOptions3 = { 
+            data: 'myData3',
+            enablePaging: true,
+            showFooter: true,
+            totalServerItems : 'totalServerItems',
+            pagingOptions: $scope.pagingOptions3,
+            columnDefs: [
+                { field: 'firstName', displayName: 'First Name', width: "40%", resizable: false},
                 { field: 'lastName', displayName: 'Last Name', width: "40%" },
                 { field: 'id', displayName: 'ID', width: "20%" }
             ]
 
-    	};
+        };
 
     }
 

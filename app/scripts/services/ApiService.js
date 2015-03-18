@@ -1,9 +1,11 @@
 define([
     'angular', 
-    'config'
+    'config',
+    'services/FireBasePaginatorService'
+
 ], function(angular, appConfig) {
 
-    function ApiService($q, $auth, $firebase, $timeout) {
+    function ApiService($q, $auth, $firebase, $timeout, FireBasePaginatorService) {
 
         var service;
 
@@ -25,13 +27,20 @@ define([
 
         }
 
+        FirebaseClientApiService.prototype.retrieveDataWithPaging = function(url, scope, field, pageType) {
+
+
+
+        
+        };
+
         FirebaseClientApiService.prototype.retrieveData = function(url, scope, field) {
 
             var fireBaseTableRef = new Firebase(appConfig.FIREBASE_URL + '/' + url);
 
             var promise  = $q(function(resolve, reject) {
 
-               fireBaseTableRef.on("value", function(snapshot, error) {
+                fireBaseTableRef.on("value", function(snapshot, error) {
                     if (error) {
                         reject(error);
                     } else {
