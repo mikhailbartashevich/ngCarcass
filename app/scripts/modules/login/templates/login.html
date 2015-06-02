@@ -1,74 +1,877 @@
-<div ng-show="errorMessage" class="alert alert-danger alert-dismissable">
-   <button type="button" class="close" data-dismiss="alert" 
-      aria-hidden="true">
-      &times;
-   </button>
-   {{errorMessage}}
-</div>
-
-<div class="container">
-    
-    <div class="omb_login">
-        <h3 class="omb_authTitle">Login or <a href="#" ui-sref="create-account" >Sign up</a></h3>
-        <div class="row omb_row-sm-offset-3 omb_socialButtons">
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="btn btn-lg btn-block omb_btn-facebook" ng-click="loginWithVendor('facebook')">
-                    <i class="fa fa-facebook visible-xs"></i>
-                    <span class="hidden-xs">Facebook</span>
-                </a>
-            </div>
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="btn btn-lg btn-block omb_btn-twitter" ng-click="loginWithVendor('twitter')">
-                    <i class="fa fa-twitter visible-xs"></i>
-                    <span class="hidden-xs">Twitter</span>
-                </a>
-            </div>  
-            <div class="col-xs-4 col-sm-2">
-                <a href="#" class="btn btn-lg btn-block omb_btn-google" ng-click="loginWithVendor('google')">
-                    <i class="fa fa-google-plus visible-xs"></i>
-                    <span class="hidden-xs">Google+</span>
-                </a>
-            </div>  
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">SMARTCAR</a>
         </div>
 
-        <div class="row omb_row-sm-offset-3 omb_loginOr">
-            <div class="col-xs-12 col-sm-6">
-                <hr class="omb_hrOr">
-                <span class="omb_spanOr">or</span>
-            </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="#about">About Device</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#services">Prices</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#portfolio">Reviews</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Demo</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">LogIn</a>
+                </li>
+            </ul>
         </div>
-
-        <div class="row omb_row-sm-offset-3">
-            <div class="col-xs-12 col-sm-6">    
-                <form class="omb_loginForm" ng-init="loginForm = {}" autocomplete="off" method="POST">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="email" class="form-control" name="username" ng-model="loginForm.email" placeholder="Email address">
-                    </div>
-                    <span class="help-block"></span>
-                                        
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input  type="password" ng-model="loginForm.password" class="form-control" name="password" placeholder="Password">
-                    </div>
-                    <span class="help-block"></span>
-                    <button class="btn btn-lg btn-primary btn-block" ng-click="handleLoginBtnClick()" type="submit">Login</button>
-                    <span class="help-block"></span>
-                    <button class="btn btn-lg btn-primary btn-block" ng-click="handleDemoLoginBtnClick()" type="submit">Demo Login</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="row omb_row-sm-offset-3">
-            <div class="col-xs-12 col-sm-3">
-                <label class="checkbox remember-me">
-                    <input type="checkbox" value="remember-me">Remember Me
-                </label>
-            </div>
-        </div>          
+        <!-- /.navbar-collapse -->
     </div>
-    
-</div>
+    <!-- /.container-fluid -->
+</nav>
+
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            
+            
+
+            <div class="container-fluid">
+
+                <div class="row device-placeholder">
+                    <div class="col-lg-5 col-md-6 text-center">
+                        <div class="landing-device">
+                            <div class="device-image">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row transparent-block">
+                    <div class="col-lg-5 col-md-6 text-center">
+                            
+                        <div class="landing-button">
+                            <a href="#video" class="btn blue-button btn-xl page-scroll">Video</a>
+                        </div>
+                        <div class="landing-button">
+                            <a href="#buy" class="btn turquoise-button btn-xl page-scroll">Buy 99,50$</a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-7 col-md-6 text-left">
+                        <div class="header-text">
+                            <h1>Smart car is closer than you think:</h1>
+                            <h2>Right now you can get full access to the life statics of your car</h2>
+                            <h2>and extend its standard capabilities by a single device.</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<section id="how-it-works" class="how-it-works">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="section-heading blue-header">How does it work?</h1>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-lg-1 col-sm-1">
+                            <div class="blue-circle"><span>1</span></div>
+                        </div>
+
+                        <div class="col-lg-11 col-sm-11">
+                            <div class="header"><h3>Install</h3></div>
+                            <div class="description">Smartcar block is installed via OBD port</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="connect-background"></div>
+            </div>
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-lg-1 col-sm-1">
+                            <div class="blue-circle"><span>3</span></div>
+                        </div>
+
+                        <div class="col-lg-11 col-sm-11">
+                            <div class="header"><h3>Receive</h3></div>
+                            <div class="description">Smartcar system records statistics data of how your car behaves,</div>
+                            <div class="description">tracks your car's position, calculates fuel consumption, etc.</div>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>                                    
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="install-background"></div>
+            </div>
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-lg-1 col-sm-1">
+                            <div class="blue-circle"><span>2</span></div>
+                        </div>
+
+                        <div class="col-lg-11 col-sm-11">
+                            <div class="header"><h3>Connect</h3></div>
+                            <div class="description">Data is sent to your laptop via GSM network</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="receive-background"></div>
+            </div>                                    
+
+        </div>
+    </div>
+</section>
+
+<section id="smartcar-features" class="smartcar-features">
+    <div class="container-fluid">
+        <div class="row blue-header">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Smartcar is ...</h2>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="simple-background"></div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="comfort-background"></div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="safety-background"></div>
+            </div>   
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="economy-background"></div>
+            </div>                       
+
+        </div>
+
+        <div class="row feature-description">
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="header"><h2>Simplicity</h2></div>
+                <div class="description">
+                    <div>It's enough to plug-in the device</div>
+                    <div>into the OBD port</div>
+                    <div>to install system.</div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="header"><h2>Comfort</h2></div>
+                <div class="description">
+                    <div>All the travel data is collected,</div>
+                    <div>processed and conviniently displayed</div>
+                    <div>by Smartcar system</div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="header"><h2>Safety</h2></div>
+                <div class="description">
+                    <div>SensyCar tracker contains </div>
+                    <div>3 types of sensors</div>
+                    <div>which can warn you immediately</div>
+                    <div>if your car is hacked</div>
+                </div>
+            </div>   
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="header"><h2>Economy</h2></div>
+                <div class="description">
+                    <div>Earn points</div>
+                    <div>for economy and defensive driving.</div>
+                    <div>Make a competition with other drivers</div>
+                    <div>and save your money.</div>
+                </div>
+            </div>                       
+
+        </div>
+        
+    </div>
+</section>
+
+
+<section id="smartbox" class="smartbox">
+ 
+
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+            <div class="col-lg-5 col-md-6 text-center">
+                <div class="smartbox-picture"></div>
+
+                <div class="landing-button">
+                    <a href="#video" class="btn blue-button btn-xl page-scroll">Documentation (PDF)</a>
+                </div>
+                <div class="landing-button">
+                    <a href="#buy" class="btn turquoise-button btn-xl page-scroll">Buy 99,50$</a>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-6 text-left">
+                <div class="smartbox-description">
+
+                    <div class="header-text blue-header">
+                        <h1>SmartBox 101</h1>                    
+                    </div>
+
+                    <div class="description">
+                        <h3>Built-in diagnostics system</h3>                    
+                    </div>
+
+                    <div class="description">
+                        <h3>Data transfer</h3>                    
+                    </div>
+
+
+                    <div class="description">
+                        <h3>Wi-Fi</h3>                    
+                    </div>
+
+                    <div class="description">
+                        <h3>Sensors system</h3>                    
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="row feature-pictures">
+
+            <div class="col-lg-2 col-lg-offset-2 col-md-2">
+                <div class="feature-picture-diagnostics"> </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2">
+                <div class="feature-picture-wifi"> </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2">
+                <div class="feature-picture-gps"> </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2">
+                <div class="feature-picture-warn"> </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2">
+                <div class="feature-picture-remote"> </div>
+            </div>            
+            
+        </div>
+
+    </div>
 
 
 
+</section>
+
+<section class="no-padding tarrifs" id="tarrifs">
+    <div class="container-fluid">
+
+        <div class="row blue-header">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Tariffs</h2>
+            </div>
+        </div>
+
+        <div class="row tarrif-names">
+
+            <div class="col-lg-3 col-sm-3"></div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="tarrif-plans turquoise">
+                    <span><h4>Basic</h4></span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="tarrif-plans blue">
+                    <span><h4>Advanced</h4></span>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="tarrif-plans dark-blue">
+                    <span><h4>Corporate</h4></span>
+                </div>
+            </div>                                
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-dark">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"> <h4>Number of Devices </h4></span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3 tarrif-column">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"> <h4>1</h4> </span>
+                </div>               
+            </div>
+
+            <div class="col-lg-3 col-sm-3 tarrif-column">
+                <div class="feature-cell">
+                   <span class="tarrif-column-text"> <h4>Up to 5</h4> </span>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3 tarrif-column">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"> <h4>Not limited</h4> </span>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-light">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4> Dashboard <h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-dark">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4> Error and malfunction analysis</h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-light">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4> Travel history </h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-dark">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4> Anti-theft and emergency system </h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-light">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4> Car service history </h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-dark">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4>  Car position detection </h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-light">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4>  Driver rating </h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-not-existing"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-dark">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4>  Vehicle fleet </h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-not-existing"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-not-existing"></div>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+        <div class="row tarrif-row tarrif-row-light">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4>  Company radar </h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-not-existing"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-not-existing"></div>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3">
+                <div class="feature-cell">
+                    <div class="marker-existing"></div>
+                </div>
+            </div>        
+                                 
+
+        </div>
+
+         <div class="row tarrif-row tarrif-row-dark">
+
+            <div class="col-lg-3 col-sm-3 tarrif-column feature-description">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"><h4>  Prices (monthly) </h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3 tarrif-column">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text green-text"> <h4> Free </h4> </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-3 tarrif-column">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"> <h4> 15.99$ </h4> </span>
+                </div>
+            </div> 
+
+            <div class="col-lg-3 col-sm-3 tarrif-column">
+                <div class="feature-cell">
+                    <span class="tarrif-column-text"> <h4>49.99$ </h4> </span>
+                </div>
+            </div>       
+                                 
+
+        </div>
+
+
+    </div>
+</section>
+
+<section class="reviews" id="reviews">
+
+    <div class="container-fluid content">
+
+        <div class="row section-header">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Reviews</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-sm-6">
+
+                <div class="container center">
+
+                    <div class="row">
+
+                        <div class="col-lg-2 col-lg-offset-2 col-sm-2">
+                            <img src="images/User2.png" class="img-responsive" alt="">
+                        </div>
+
+                        <div class="col-lg-4 col-sm-4">
+
+                            <div class="triangle-left"></div>
+                            
+                            <div class="review">
+
+                                <div class="header">                            
+                                    <div>Andrew,</div>
+                                    <div>Driver</div>                        
+                                </div>
+
+                                <div class="description">
+                                    <div>I've started to use Smartcar</div>
+                                    <div>just to test it. And it's suprisingly upgraded my car.</div>                        
+                                </div>
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-sm-6">
+
+                <div class="container center">
+
+                    <div class="row">
+
+                        <div class="col-lg-2  col-lg-offset-2 col-sm-2">
+                            <img src="images/User3.png" class="img-responsive" alt="">
+                        </div>
+
+                        <div class="col-lg-4 col-sm-4">
+
+                            <div class="triangle-left"></div>
+
+                            <div class="review">
+
+                                <div class="header">                            
+                                    <div>Alex,</div>
+                                    <div>Director of the vehicle fleet</div>                        
+                                </div>
+
+                                <div class="description">
+                                    <div>The system showed it's best after month of using.</div>
+                                    <div>It's priceless for the vehicle park.</div>
+                                    <div>Now I always know where my drivers are.</div>                         
+                                </div>
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-sm-6">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-lg-4 col-lg-offset-2 col-sm-4">
+
+                            <div class="review">
+
+                                <div class="header">                            
+                                    <div>Igor,</div>
+                                    <div>Taxi driver</div>                        
+                                </div>
+
+                                <div class="description">
+                                    <div>I've been driving for 18 years.</div>
+                                    <div>I'm always on the road and spend so much fuel.</div>
+                                    <div>Now I'm using Smartcar and spend less money for gasolin.</div>                            
+                                </div>
+
+                            </div>
+
+                            <div class="triangle-right"></div>
+                            
+                        </div>
+
+                        <div class="col-lg-2 col-sm-2">
+                            <img src="images/User4.png" class="img-responsive" alt="">
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-sm-6">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-lg-4 col-lg-offset-2 col-sm-4">
+
+                            <div class="review">
+
+                                <div class="header">                            
+                                    <div>Olha,</div>
+                                    <div>Student</div>                        
+                                </div>
+
+                                <div class="description">
+                                    <div>Inspite of I'm a girl I Smartcar system it myself.</div>
+                                    <div>It's so much comfortable. I'm using maps, parking system.</div>
+                                    <div>If something happens it shows me immediately.</div>                        
+                                </div>
+
+                            </div>
+
+                            <div class="triangle-right"></div>
+
+                            
+                        </div>
+
+                        <div class="col-lg-2 col-sm-2">
+                            <img src="images/User1.png" class="img-responsive" alt="">
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+<section id="demo-device" class="demo-device">
+    <div class="container">
+        <div class="row section-header blue-header">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Test it</h2>
+                <h3 class="section-heading">Try demo right now</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+
+                <div class="tablet-background"></div>
+
+            </div>
+               
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-12 text-center">
+
+                <div class="landing-button">
+                    <a href="#video" class="btn blue-button btn-xl page-scroll">Demo</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container text-center">
+        <hr class="primary">
+        (c) 2015 - Smartcar
+    </div>
+
+</section>

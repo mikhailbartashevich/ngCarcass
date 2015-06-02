@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
         dest: {
-            path: 'dist',
+            path: 'public',
             images: '<%= dest.path %>/images',
             templates: '<%= dest.path %>/templates',
             styles: '<%= dest.path %>/styles',
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                 {
                     context: '/api',
                     host: 'localhost',
-                    port: 9009,
+                    port: 8080,
                     https: false
                 }
             ],
@@ -61,19 +61,6 @@ module.exports = function(grunt) {
                     ];
                   }
                 }
-            },
-
-            dist: {
-                options: {
-                    open: true,
-                    base: 'dist',
-                    middleware: function (connect, options) {
-                        return [
-                            proxySnippet,
-                            connect.static('dist')
-                        ];
-                    }
-                }
             }
         },    
 
@@ -89,7 +76,7 @@ module.exports = function(grunt) {
                 paths : requireDeps.paths, 
                 shim : requireDeps.shim,
                 include: ['configs/require-config-prod'],
-                out: 'dist/scripts/main.min.js'
+                out: '<%= dest.path %>/scripts/main.min.js'
             },
 
             prod: {
@@ -109,12 +96,28 @@ module.exports = function(grunt) {
             },
 
             index: {
-                src: 'app/index.html', dest: 'dist/index.html'
+                src: 'app/index/index.html', dest: '<%= dest.path %>/index.html'
             },
 
             requirejs : {
-                src: 'bower_components/requirejs/require.js', dest: 'dist/scripts/vendor/require.js'
+                src: 'bower_components/requirejs/require.js', dest: '<%= dest.path %>/scripts/vendor/require.js'
+            },
+
+            client : { 
+                cwd: '<%= dest.path %>',  
+                src: '**/*',           
+                dest: 'deploy/<%= dest.path %>',    
+                expand: true
+            },
+
+            server : {
+                cwd: 'server',  
+                src: '**/*',           
+                dest: 'deploy/server',    
+                expand: true
             }
+
+            
 
 
         },
@@ -126,7 +129,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: '.tmp/styles/css',
                     src: ['*.css'],
-                    dest: 'dist/styles'
+                    dest: '<%= dest.path %>/styles'
                 }]
             }
         },
@@ -145,7 +148,8 @@ module.exports = function(grunt) {
 
         clean: {
             dest: ['<%= dest.path %>'],
-            tmp: ['.tmp']
+            tmp: ['.tmp'],
+            deploy: ['deploy/<%= dest.path %>', 'deploy/server']
         },
 
         html2js: {
@@ -167,7 +171,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'app/images',
                     src: '{,*/}*.svg',
-                    dest: 'dist/images'
+                    dest: '<%= dest.images %>'
                 }]
             }
         },
@@ -256,19 +260,19 @@ module.exports = function(grunt) {
         ]);
     });
 
-    grunt.registerTask('prod', 'Compile all sources then start a connect web server', function (target) {
+    grunt.registerTask('build', 'Compile all sources then start a connect web server', function (target) {
         grunt.task.run([
             'clean',
             'jshint',
             'html2js',
             'svgmin', 
             'requirejs:prod', 
-            'copy', 
+            'copy:fonts', 'copy:images', 'copy:index', 'copy:requirejs', 
             'less:dist',
             'cssmin:dist',
-            'clean:tmp',
-            'configureProxies',
-            'connect:dist:keepalive'
+            'copy:client', 
+            'copy:server'
+            
         ]);
     });
 

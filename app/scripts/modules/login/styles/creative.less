@@ -1,0 +1,733 @@
+@import "variables.less";
+@import "mixins.less";
+
+// Global Components
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    .serif-font;
+}
+
+hr {
+    border-color: @theme-primary;
+    border-width: 3px;
+    max-width: 50px;
+}
+
+hr.light {
+    border-color: white;
+}
+
+a {
+    .transition-all;
+    color: @theme-primary;
+    &:hover,
+    &:focus {
+        color: darken(@theme-primary, 10%);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    .sans-serif-font;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.bg-primary {
+    background-color: @theme-primary;
+}
+
+.bg-dark {
+    background-color: @theme-dark;
+    color: white;
+}
+
+.text-faded {
+    color: fade(white, 70%);
+}
+
+section {
+    padding: 10px 0;
+}
+
+aside {
+    padding: 50px 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.landing-content {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+// Navigation
+.main-content {
+    .navbar-default {
+        background-color: @blue-background-navigation;
+        border-color: fade(@navigation-text-color, 5%);
+        .sans-serif-font;
+        .transition-all;
+
+        .navbar-header .navbar-brand {
+            color: @navigation-text-color;
+            .sans-serif-font;
+            font-weight: 700;
+            text-transform: uppercase;
+            &:hover,
+            &:focus {
+                color: darken(@navigation-text-color, 10%);
+            }
+        }
+
+        .nav {
+            > li {
+                > a,
+                > a:focus {
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    font-size: 13px;
+                    color: @navigation-text-color;
+                    &:hover {
+                        color: @navigation-text-color;
+                    }
+                }
+                &.active {
+                    > a,
+                    > a:focus {
+                        color: @navigation-text-color !important;
+                        background-color: @blue-background-navigation;
+                        &:hover {
+                            background-color: @blue-background-navigation;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media (min-width: 768px) {
+            background-color: @blue-background-navigation;
+            border-color: fade(white, 30%);
+
+            .navbar-header .navbar-brand {
+                color: fade(white, 70%);
+                &:hover,
+                &:focus {
+                    color: white;
+                }
+            }
+
+            .nav > li > a,
+            .nav > li > a:focus {
+                color: fade(white, 70%);
+                &:hover {
+                    color: white;
+                }
+            }
+
+            &.affix {
+                background-color: white;
+                border-color: fade(@navigation-text-color, 5%);
+                .navbar-header .navbar-brand {
+                    color: @navigation-text-color;
+                    font-size: 14px;
+                    &:hover,
+                    &:focus {
+                        color: darken(@navigation-text-color, 10%);
+                    }
+                }
+                .nav > li > a,
+                .nav > li > a:focus {
+                    color: @navigation-text-color;
+                    &:hover {
+                        color: @navigation-text-color;
+                    }
+                }
+            }
+
+            
+        }
+    }
+
+    .landing-button {
+        a {
+            min-width: 400px;
+            min-height: 40px;
+            border-radius: 0px;
+            color: @navigation-text-color;
+        }
+
+        .blue-button {
+            background-color: @blue-landing-button;
+        }
+
+        .turquoise-button {
+            background-color: @blue-background-navigation;
+        }
+
+        margin: 20px;
+        color: @navigation-text-color;
+    }
+}
+
+.landing-device {
+    background-color: @navigation-text-color;
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        .landing-button {
+            a {
+                min-width: 200px;
+            }
+        }
+
+        .landing-device {
+            height: 200px;
+            width: 200px;
+        }
+    }
+}
+
+// Homepage Header
+
+header {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    .background-cover;
+    background-position: center;
+    background-image: url('/images/header.jpg');
+    text-align: center;
+    color: white;
+    .header-content {
+        position: relative;
+        text-align: center;
+        padding: 100px 15px 100px;
+        width: 100%;
+        .header-content-inner {
+            h1 {
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            hr {
+                margin: 30px auto;
+            }
+            p {
+                font-weight: 300;
+                color: fade(white, 70%);
+                font-size: 16px;
+                margin-bottom: 50px;
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            .transparent-block {
+                background: fade(black, 30%);
+                margin: 0 -30px;
+            }
+
+            .device-placeholder {
+                margin: 0 -30px 20px;
+            }
+
+            .device-image {
+                background-image: url('/images/Device1.png');
+                height: 250px;
+                width: 270px;
+            }
+
+            .header-text {
+               
+            }
+        }
+    }
+    @media (min-width: 768px) {
+        min-height: 100%;
+        .header-content {
+            position: absolute;
+            bottom: 0px;
+            
+            .header-content-inner {
+                margin-left: auto;
+                margin-right: auto;
+                p {
+                    font-size: 18px;
+                    max-width: 80%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        }
+    }
+}
+
+// Sections
+
+.section-heading {
+    margin-top: 0;
+}
+
+.service-box {
+    max-width: 400px;
+    margin: 50px auto 0;
+    @media (min-width: 992px) {
+        margin: 20px auto 0;
+    }
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.reviews {
+    background-image: url('/images/BG3.png');
+
+    .section-header {
+        margin: 20px 0;
+    }
+
+    .section-heading {
+        color: white;
+    }
+}
+
+.blue-header {
+    color : #3D87C0;
+    margin: 20px;
+}
+
+.how-it-works {
+
+    .install-background {
+        height: 350px;
+        width: 530px;
+        background-image: url('/images/Car.png');
+    }
+
+    .connect-background {
+        height: 180px;
+        width: 400px;
+        background-image: url('/images/Station.png');
+    }
+
+    .receive-background {
+        height: 295px;
+        width: 340px;
+        background-image: url('/images/Laptop.png');
+    }
+
+    .blue-circle {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        color: white;
+        background-color: #39C1DE;
+        margin-top: 20px;
+
+        span {
+            font-size: 27px;
+            margin-left: 12px;
+        }       
+
+    }
+
+    .header {
+        color: #39C1DE;
+    }
+
+    .description {
+        color: #3D87C0;
+    }
+
+}
+
+.smartcar-features {
+
+    background: rgb(254,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(254,255,255,1) 0%, rgba(221,241,249,1) 35%, rgba(100,207,230,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,255,255,1)), color-stop(35%,rgba(221,241,249,1)), color-stop(100%,rgba(100,207,230,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(254,255,255,1) 0%,rgba(221,241,249,1) 35%,rgba(100,207,230,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(254,255,255,1) 0%,rgba(221,241,249,1) 35%,rgba(100,207,230,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(254,255,255,1) 0%,rgba(221,241,249,1) 35%,rgba(100,207,230,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(254,255,255,1) 0%,rgba(221,241,249,1) 35%,rgba(100,207,230,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#64cfe6',GradientType=0 ); /* IE6-9 */
+
+    color: white;
+
+    .feature-picture {
+        margin: 0 auto;
+        height: 200px;
+        width: 200px;
+    }
+
+    .simple-background {
+        .feature-picture;
+        background-image: url('/images/option4.png');
+    }
+
+    .comfort-background {
+        .feature-picture;
+        background-image: url('/images/option1.png');
+    }
+
+    .safety-background {
+        .feature-picture;
+        background-image: url('/images/option2.png');
+    }
+
+    .economy-background {
+        .feature-picture;
+        background-image: url('/images/option3.png');
+    }
+
+    .feature-description {
+        text-align: center;
+    }
+
+}
+
+.smartbox {
+    background-image: url('/images/BG2.png');
+    height: 950px;
+
+    .smartbox-picture {
+        background-image: url('/images/Device2.png');
+        height: 300px;
+        width: 470px;
+        margin: 250px auto 0;
+    }
+
+    .smartbox-description {
+        margin-top: 200px; 
+    }
+
+    .description {
+        margin-left: 20px;
+    }
+
+    .feature-pictures {
+        margin-top: 130px;
+    }
+
+    .feature-picture-diagnostics{
+        height: 60px;
+        width: 60px;
+        background-image: url('/images/CPU.png');
+
+    }
+
+    .feature-picture-wifi {
+        height: 60px;
+        width: 84px;
+        background-image: url('/images/WIFI.png');
+
+    }
+
+    .feature-picture-gps {
+        height: 60px;
+        width: 43px;
+        background-image: url('/images/GPS.png');
+
+    }
+
+    .feature-picture-warn {
+        height: 60px;
+        width: 49px;
+        background-image: url('/images/Guard.png');
+
+    }
+
+    .feature-picture-remote {
+        height: 60px;
+        width: 60px;
+        background-image: url('/images/PHONE.png');
+
+    }
+}
+
+.reviews {
+
+    .content {
+        margin: 20px;
+
+        .center {
+            margin: 0 auto;
+        }
+    }
+
+    .triangle-left {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 20px 40px 20px 0;
+        border-color: transparent white transparent transparent;
+        float: left;
+        margin-left: -20px;
+        margin-top: 45px;
+    }
+
+    .triangle-right {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 20px 0 20px 40px;
+        border-color: transparent transparent transparent white;
+        float: right;
+        margin-right: -20px;
+        margin-top: -150px
+
+    }
+
+    .review {
+        background-color: white;
+        border-radius: 10px;
+        height: 150px;
+        color: black;
+        margin: 20px;
+
+        .header {
+            padding: 10px 0 0 10px;
+            color : #3D87C0;
+        }
+
+        .description {
+
+            padding: 10px 0 0 10px;
+
+        }
+    }
+}
+
+.demo-device {
+    .tablet-background {
+        background-image: url('/images/Demo.png');
+        height: 400px;
+        width: 885px;
+        margin: 0 auto;
+    }
+}
+
+.tarrifs {
+    background: #ECECEC; //TODO var
+    color : #3D87C0;
+
+    .tarrif-plans {
+        border-radius: 0px;
+        max-width: 300px;
+        height: 40px;
+        text-align: center;
+        background-color: blue;
+        color: white;
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;      
+        }
+
+    }
+
+    .green-text {
+        color: #46B153;
+    }
+
+
+
+    .section-heading {
+        color: #3D87C0;
+    }
+
+    .turquoise {
+        background-color: @blue-background-navigation;
+    }
+     
+    .blue {
+        background-color: #3D87C0;
+    }
+    
+    .dark-blue {
+        background-color: #2A455B;
+    }
+
+    .tarrif-row {
+        margin: 10px 20px;
+        height: 40px;
+
+        .feature-cell {
+            max-width: 300px;
+
+            .marker-existing {
+                height: 35px;
+                width: 35px;
+                margin: 3px auto 0;
+                background-image: url('/images/Available.png');
+            }
+
+            .marker-not-existing {
+                height: 35px;
+                width: 35px;
+                margin: 3px auto 0;
+                background-image: url('/images/Not_Available.png');
+            }
+        }
+
+        .tarrif-column.feature-description {
+            text-align: left;
+        }
+
+        .tarrif-column {
+            text-align: center;
+            // max-width: 300px;
+
+            span {
+                display: inline-block;
+                vertical-align: middle;
+                line-height: normal;      
+            }
+        }
+    }
+
+    .tarrif-row-light {
+        background-color: #F6F6F6;
+    }
+}
+
+.portfolio-box {
+    position: relative;
+    display: block;
+    max-width: 650px;
+    margin: 0 auto;
+    .portfolio-box-caption {
+        color: white;
+        opacity: 0;
+        display: block;
+        background: fade(@theme-primary, 90%);
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        .transition-all;
+        .portfolio-box-caption-content {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            .project-category,
+            .project-name {
+                .sans-serif-font;
+                padding: 0 15px;
+            }
+            .project-category {
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 14px;
+            }
+            .project-name {
+                font-size: 18px;
+            }
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .portfolio-box-caption {
+            .portfolio-box-caption-content {
+                .project-category {
+                    font-size: 16px;
+                }
+                .project-name {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
+
+.call-to-action {
+    h2 {
+        margin: 0 auto 20px;
+    }
+}
+
+// Bootstrap Overrides
+.text-primary {
+    color: @theme-primary;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+// Button Styles
+.btn-default {
+    .button-variant(@navigation-text-color;white;white);
+}
+
+.btn-primary {
+    .button-variant(white;@theme-primary;@theme-primary);
+}
+
+.btn {
+    .sans-serif-font;
+    border: none;
+    border-radius: 300px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.btn-xl {
+    padding: 15px 30px;
+}
+
+// Extras
+// -- Highlight Color Customization
+::-moz-selection {
+    color: white;
+    text-shadow: none;
+    background: @theme-dark;
+}
+
+::selection {
+    color: white;
+    text-shadow: none;
+    background: @theme-dark;
+}
+
+img::selection {
+    color: white;
+    background: transparent;
+}
+
+img::-moz-selection {
+    color: white;
+    background: transparent;
+}
+
+body {
+    webkit-tap-highlight-color: @theme-dark;
+}

@@ -34,9 +34,10 @@ define([
                 collectAllDependencies: collectAllDependencies,
                 registerModule: registerModule,
                 APPLICATION_MODE : 'firebase-client-auth', // or firebase-backend-auth
-                FACEBOOK_APP_ID : '426618484157529',
-                GOOGLE_APP_ID : '956461866869-sagk6rlfh16uu6ej3h0jdj6bejhpcjs2.apps.googleusercontent.com',
-                FIREBASE_URL: 'https://amber-heat-5329.firebaseio.com/'
+                FACEBOOK_APP_ID : '374436056064525',
+                TWITTER_APP_ID : 'dxCBsNSfSFfmoGQhOUWBpOBVn',
+                GOOGLE_APP_ID : '192844174580-irkqb2qa1t4741torob1dtcgl48qi4kt.apps.googleusercontent.com',
+                FIREBASE_URL: 'https://luminous-torch-1913.firebaseio.com/'
 
             };
     });
